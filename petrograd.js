@@ -21,12 +21,20 @@ function visProdukt(produkt) {
     //indsæt data i klon
     klon.querySelector(".data_navn").innerHTML = produkt.navn;
     klon.querySelector(".data_kort_beskrivelse").innerHTML = produkt.kortbeskrivelse;
+    klon.querySelector(".data_allergener").innerHTML = produkt.allergener;
     klon.querySelector(".data_pris").innerHTML = produkt.pris;
 
     var rabatpris = Math.ceil(produkt.pris - (produkt.pris * produkt.rabatsats / 100));
     klon.querySelector(".data_rabatpris").innerHTML = rabatpris;
 
     klon.querySelector(".data_billede").src = "/Billeder/imgs/Large/" + produkt.billede + ".jpg";
+
+    if (produkt.allergener == false) {
+        var allergener = klon.querySelector(".allergener_tekst");
+        allergener.parentNode.removeChild(allergener);
+    } else {
+        klon.querySelector(".data_allergener").innerHTML = "Her ville der have stået allergener, hvis det var med i JSON-filen! ... Peter Lind...";
+    }
 
     if (produkt.udsolgt == false) {
         //produktet er ikke udsolge
