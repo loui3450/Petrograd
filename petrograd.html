@@ -46,211 +46,54 @@
         </div>
 
 
-        <!-- DRIKKEVARER -->
+        <!-- MENUKORT -->
 
-        <div class="drikkevarer">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                <h2>Drikkevarer</h2>
-            </div>
 
-            <div class="produktliste">
-                <template id="produkt_template">
-                    <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                        <img class="data_billede" src="Billeder/imgs/Large/hvidvin.jpg" alt="Hvidvin">
-                        <h3 class="data_navn">DATA_NAVN</h3>
-                        <h4 class="pris">Pris: <span class="data_pris">DATA_PRIS</span>,-</h4>
-                        <!-- TODO: Sæt udsolgt class ved udsolgt. -->
-                        <h4 class="rabatpris">Rabatpris: <span class="data_rabatpris">DATA_RABATPRIS</span>,-</h4>
-                        <!-- Skal kun vises, hvis produktet har rabat! -->
-                        <!-- TODO: Sæt rabatpris ved rabat-->
-                        <h4 class="udsolgt_tekst">Produktet er desværre udsolgt!</h4>
-                        <!-- Skal kun vises, hvis produktet er udsolgt! -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_drik_1">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-                    </div>
-                </template>
-            </div>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <h2>Drikkevarer</h2>
         </div>
 
 
-        <!-- FORRETTER -->
-
-        <div class="forretter">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                <h2>Forretter</h2>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/ringbroed-druer.jpg" alt="Ringbrød med vindruer">
-                <h3>Ringbrød med vindruer</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_forret_1">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/rodbede-cabanossi.jpg" alt="Cabanossi med rødbedecreme">
-                <h3>Cabanossi med rødbedecreme</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_forret_2">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/caviarbruschetta.jpg" alt="Caviar bruschetta">
-                <h3>Caviar bruschetta</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_forret_3">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
+        <div class="produktliste">
+            <template id="produkt_template">
+                <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
+                    <img class="data_billede" src="Billeder/imgs/Large/hvidvin.jpg" alt="Hvidvin">
+                    <h3 class="data_navn">DATA_NAVN</h3>
+                    <h5 class="data_kort_beskrivelse">KORT_BESKRIVELSE</h5>
+                    <h5 class="allergener_tekst">Allergener: <span class="data_allergener">DATA_ALLERGENER</span></h5>
+                    <h5 class="vegetaregnet_tekst">Produktet er vegetaregnet.</h5>
+                    <h5 class="ikke_vegetaregnet_tekst">Produktet er IKKE vegetaregnet.</h5>
+                    <h4 class="pris">Pris: <span class="data_pris">DATA_PRIS</span>,-</h4>
+                    <h4 class="rabatpris">Rabatpris: <span class="data_rabatpris">DATA_RABATPRIS</span>,-</h4>
+                    <!-- Skal kun vises, hvis produktet har rabat! -->
+                    <h4 class="udsolgt_tekst">Produktet er desværre udsolgt!</h4>
+                    <!-- Skal kun vises, hvis produktet er udsolgt! -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_menukort">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
+                </div>
+            </template>
         </div>
 
 
-        <!-- HOVEDRETTER -->
-
-        <div class="hovedretter">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                <h2>Hovedretter</h2>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/russisktapas.jpg" alt="Russisk tapas">
-                <h3>Russisk tapas</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_hovedret_1">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/boef.jpg" alt="Diplomatbøf med grønt">
-                <h3>Diplomatbøf med grønt</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_hovedret_2">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/bulgarskbondesuppe.jpg" alt="Bulgarsk bondesuppe">
-                <h3>Bulgarsk bondesuppe</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_hovedret_3">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <h2>Forretter</h2>
         </div>
 
 
-        <!-- SIDEORDERS -->
-
-        <div class="sideorders">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                <h2>Sideorders</h2>
-            </div>
-
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/kartofler.jpg" alt="Kogte kartofler">
-                <h3>Kogte kartofler</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_dessert_1">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
-
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/russisksalat.jpg" alt="Russisk salat">
-                <h3>Russisk salat</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_dessert_2">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/bondeboller.jpg" alt="Murmanske bondeboller">
-                <h3>Murmanske bondeboller</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_dessert_3">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <h2>Hovedretter</h2>
         </div>
 
 
-        <!-- DESSERTER -->
-
-        <div class="desserter">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                <h2>Desserter</h2>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/pavlova.jpg" alt="Pavlova">
-                <h3>Pavlova</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/kaviarpandekager.jpg" alt="Pandekager med kaviar">
-                <h3>Pandekager med kaviar</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/guzni.jpg" alt="Guzni">
-                <h3>Guzni</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-            </div>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <h2>Sideorders</h2>
         </div>
 
+
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <h2>Desserter</h2>
+        </div>
     </div>
+
 
     <script src="petrograd.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

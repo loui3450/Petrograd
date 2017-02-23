@@ -20,6 +20,7 @@ function visProdukt(produkt) {
 
     //indsæt data i klon
     klon.querySelector(".data_navn").innerHTML = produkt.navn;
+    klon.querySelector(".data_kort_beskrivelse").innerHTML = produkt.kortbeskrivelse;
     klon.querySelector(".data_pris").innerHTML = produkt.pris;
 
     var rabatpris = Math.ceil(produkt.pris - (produkt.pris * produkt.rabatsats / 100));
