@@ -82,8 +82,7 @@ function visProdukt(produkt) {
     }
 
 
+    /**** TILFØJER klon TIL KATEGORI ****/
+    document.querySelector("." + produkt.kategori).appendChild(klon);
 
-
-    //append klon til .produkt_liste
-    document.querySelector(".produktliste").appendChild(klon);
 }
