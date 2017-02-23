@@ -3,31 +3,51 @@ window.addEventListener("load", sidenVises);
 function sidenVises() {
     console.log("siden vises");
 
-    //læs produktliste
+
+    /**** LÆS PRODUKTLISTE ****/
+
     $.getJSON("http://petlatkea.dk/2017/dui/api/productlist?callback=?", visProduktliste)
 
 }
+
+
+/**** LÆSER JSON-FIL OG KALDER visProdukt PÅ ALLE PRODUKTER ****/
 
 function visProduktliste(listen) {
     console.table(listen);
     listen.forEach(visProdukt);
 }
 
+
+/**** INDHENTER DATA FRA visProduktliste ****/
+
 function visProdukt(produkt) {
     console.log(produkt);
-    //klon produkt_template
+
+
+    /**** KLON PRODUKT_TEMPLATE ****/
     var klon = document.querySelector("#produkt_template").content.cloneNode(true);
 
-    //indsæt data i klon
+
+    /**** INDSÆT DATA I KLON ****/
     klon.querySelector(".data_navn").innerHTML = produkt.navn;
     klon.querySelector(".data_kort_beskrivelse").innerHTML = produkt.kortbeskrivelse;
     klon.querySelector(".data_allergener").innerHTML = produkt.allergener;
     klon.querySelector(".data_pris").innerHTML = produkt.pris;
 
+
+    /**** RABAT-BEREGNING ****/
+
     var rabatpris = Math.ceil(produkt.pris - (produkt.pris * produkt.rabatsats / 100));
     klon.querySelector(".data_rabatpris").innerHTML = rabatpris;
 
+
+    /**** BILLEDER ****/
+
     klon.querySelector(".data_billede").src = "/Billeder/imgs/Large/" + produkt.billede + ".jpg";
+
+
+    /**** ALLERGENER ****/
 
     if (produkt.allergener == false) {
         var allergener = klon.querySelector(".allergener_tekst");
@@ -35,6 +55,9 @@ function visProdukt(produkt) {
     } else {
         klon.querySelector(".data_allergener").innerHTML = "Her ville der have stået allergener, hvis det var med i JSON-filen! ... Peter Lind...";
     }
+
+
+    /**** UDSOLGT ****/
 
     if (produkt.udsolgt == false) {
         //produktet er ikke udsolge
@@ -44,6 +67,9 @@ function visProdukt(produkt) {
     } else {
         klon.querySelector(".pris").classList.add("udsolgt");
     }
+
+
+    /**** RABAT ****/
 
     if (produkt.udsolgt == true || produkt.rabatsats == 0) {
         //der er ikke rabat. Rabatprisen skal fjernes
