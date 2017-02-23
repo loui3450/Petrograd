@@ -80,6 +80,7 @@ p {
     height: 75vh;
 }
 
-.udsolgt {
+.udsolgt,
+.rabat {
     text-decoration: line-through;
 }
