@@ -1,0 +1,81 @@
+body {
+    background-color: rgb(193, 140, 102) !important;
+}
+
+#splashbillede img {
+    position: relative;
+    height: ;
+    width: 100%;
+    margin-bottom: 5vh;
+    border-bottom: solid 10px;
+}
+
+#block {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 5vw;
+    color: rgb(193, 140, 102);
+    -webkit-text-stroke: 2px black;
+    position: absolute;
+    top: 45vw;
+    left: 3%;
+    border-left: solid 1vh black;
+}
+
+#sorteringsknap {
+    padding: 0;
+    text-align: right;
+}
+
+#sorteringsknap button {
+    font-family: 'Khula', sans-serif;
+    color: #e0bc92;
+    background-color: #383838;
+    border-color: #e0bc92;
+    border-width: 2px;
+}
+
+.dropdown-menu {
+    font-family: 'Khula', sans-serif;
+    color: #e0bc92;
+    background-color: #383838 !important;
+    border-color: #e0bc92 !important;
+    border-width: 2px;
+    padding: 10px !important;
+}
+
+.container h2 {
+    font-size: 6vh;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    text-align: center;
+    margin-bottom: 5vh;
+    border-bottom: solid 5px;
+}
+
+.container h3 {
+    font-size: 4vh;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    text-align: center;
+}
+
+.container h4 {
+    font-size: 3vh;
+    font-family: 'Khula', sans-serif;
+}
+
+.container h5,
+p {
+    font-size: 2.4vh;
+    font-family: 'Khula', sans-serif;
+}
+
+.container img {
+    width: 100%;
+}
+
+#ret {
+    margin-bottom: 5vh;
+    background-color: #e0bc92;
+    border-left: solid 10px;
+    border-right: solid 10px rgb(193, 140, 102);
+    height: 65vh;
+}
