@@ -27,6 +27,15 @@ function visProdukt(produkt) {
 
     klon.querySelector(".data_billede").src = "/Billeder/imgs/Large/" + produkt.billede + ".jpg";
 
+    if (produkt.udsolgt == false) {
+        //produktet er ikke udsolge
+        //udsolgt_tekst skal fjernes
+        var udsolgt_tekst = klon.querySelector(".udsolgt_tekst");
+        udsolgt_tekst.parentNode.removeChild(udsolgt_tekst);
+    } else {
+        klon.querySelector(".pris").classList.add("udsolgt");
+    }
+
 
     //append klon til .produkt_liste
     document.querySelector(".produktliste").appendChild(klon);
