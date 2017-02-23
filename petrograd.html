@@ -53,41 +53,21 @@
                 <h2>Drikkevarer</h2>
             </div>
 
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/hvidvin.jpg" alt="Hvidvin">
-                <h3>Hvidvin</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_drik_1">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/roedvin.jpg" alt="Rødvin">
-                <h3>Rødvin</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_drik_2">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
-            </div>
-
-            <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
-                <img src="Billeder/imgs/Large/cola.jpg" alt="Gloske">
-                <h3>Gloske</h3>
-                <p>Beskrivelse:
-                    <br>Vegetaregnet:
-                    <br>Udsolgt:
-                </p>
-                <h4>Pris:</h4>
-                <h5>Rabat:</h5>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="modal_drik_3">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
+            <div class="produktliste">
+                <template id="produkt_template">
+                    <div id="ret" class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-0">
+                        <img class="data_billede" src="Billeder/imgs/Large/hvidvin.jpg" alt="Hvidvin">
+                        <h3 class="data_navn">DATA_NAVN</h3>
+                        <h4 class="pris">Pris: <span class="data_pris">DATA_PRIS</span>,-</h4>
+                        <!-- TODO: Sæt udsolgt class ved udsolgt. -->
+                        <h4 class="rabatpris">Rabatpris: <span class="data_rabatpris">DATA_RABATPRIS</span>,-</h4>
+                        <!-- Skal kun vises, hvis produktet har rabat! -->
+                        <!-- TODO: Sæt rabatpris ved rabat-->
+                        <h4 class="udsolgt_tekst">Produktet er desværre udsolgt!</h4>
+                        <!-- Skal kun vises, hvis produktet er udsolgt! -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_drik_1">Se detaljer<span class="glyphicon glyphicon-chevron-right"></span></button>
+                    </div>
+                </template>
             </div>
         </div>
 
@@ -272,11 +252,9 @@
 
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="petrograd.js"></script>
-    <script src="bootstrap-3.3.7-dist/bootstrap-3.3.7-dist/js/bootstrap.min.js">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
