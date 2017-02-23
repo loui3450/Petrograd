@@ -5,14 +5,12 @@ function sidenVises() {
 
 
     /**** LÆS PRODUKTLISTE ****/
-
     $.getJSON("http://petlatkea.dk/2017/dui/api/productlist?callback=?", visProduktliste)
 
 }
 
 
 /**** LÆSER JSON-FIL OG KALDER visProdukt PÅ ALLE PRODUKTER ****/
-
 function visProduktliste(listen) {
     console.table(listen);
     listen.forEach(visProdukt);
@@ -20,7 +18,6 @@ function visProduktliste(listen) {
 
 
 /**** INDHENTER DATA FRA visProduktliste ****/
-
 function visProdukt(produkt) {
     console.log(produkt);
 
@@ -29,7 +26,7 @@ function visProdukt(produkt) {
     var klon = document.querySelector("#produkt_template").content.cloneNode(true);
 
 
-    /**** INDSÆT DATA I KLON ****/
+    /**** INDSÆTTER DATA I KLON ****/
     klon.querySelector(".data_navn").innerHTML = produkt.navn;
     klon.querySelector(".data_kort_beskrivelse").innerHTML = produkt.kortbeskrivelse;
     klon.querySelector(".data_allergener").innerHTML = produkt.allergener;
@@ -37,18 +34,15 @@ function visProdukt(produkt) {
 
 
     /**** RABAT-BEREGNING ****/
-
     var rabatpris = Math.ceil(produkt.pris - (produkt.pris * produkt.rabatsats / 100));
     klon.querySelector(".data_rabatpris").innerHTML = rabatpris;
 
 
     /**** BILLEDER ****/
-
     klon.querySelector(".data_billede").src = "/Billeder/imgs/Large/" + produkt.billede + ".jpg";
 
 
     /**** ALLERGENER ****/
-
     if (produkt.allergener == false) {
         var allergener = klon.querySelector(".allergener_tekst");
         allergener.parentNode.removeChild(allergener);
@@ -57,8 +51,17 @@ function visProdukt(produkt) {
     }
 
 
-    /**** UDSOLGT ****/
+    /**** VEGETAR ****/
+    if (produkt.vegetar == false) {
+        var vegetaregnet = klon.querySelector(".vegetaregnet_tekst");
+        vegetaregnet.parentNode.removeChild(vegetaregnet);
+    } else {
+        var ikke_vegetaregnet = klon.querySelector(".ikke_vegetaregnet_tekst");
+        ikke_vegetaregnet.parentNode.removeChild(ikke_vegetaregnet);
+    }
 
+
+    /**** UDSOLGT ****/
     if (produkt.udsolgt == false) {
         //produktet er ikke udsolge
         //udsolgt_tekst skal fjernes
@@ -70,7 +73,6 @@ function visProdukt(produkt) {
 
 
     /**** RABAT ****/
-
     if (produkt.udsolgt == true || produkt.rabatsats == 0) {
         //der er ikke rabat. Rabatprisen skal fjernes
         var rabatpris = klon.querySelector(".rabatpris");
