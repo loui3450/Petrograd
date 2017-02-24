@@ -16,31 +16,51 @@
 
 <body>
     <!-- SPLASHBILLEDE -->
-    <div id="splashbillede">
-        <img src="Billeder/imgs/Large/hvidvin.jpg">
-        <div id="block" class="hidden-xs col-sm-8">
-            Velkommen til
-            <br> Restaurant Petrograd
-        </div>
+<div id="splashbillede">
+    <img src="Billeder/imgs/Large/hvidvin.jpg">
+    <div id="block" class="hidden-xs col-sm-8">
+        Velkommen til
+        <br> Restaurant Petrograd
     </div>
+</div>
 
 
     <div class="container">
 
 
-        <!-- SORTERINGSKNAP -->
-        <div id="sorteringsknap" class="col-xs-12 pull-right">
-            <div class="btn-group">
-                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Sorter efter <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li>Pris (stigende)</li>
-                    <li>Pris (faldende)</li>
-                    <li>Rabat</li>
-                    <li>Udsolgt</li>
-                    <li>Vegetaregnet</li>
-                </ul>
+        <!-- FILTRERINGSMENU -->
+        <div class="row">
+            <div id="filtreringsmenu">
+                <form action="">
+                    <div class="col-xs-6 col-sm-2 col-sm-offset-2 col-md-offset-3">
+                        <input type="checkbox">Allergener
+                    </div>
+                    <div class="col-xs-6 col-sm-2">
+                        <input type="checkbox">Vegetaregnet
+                    </div>
+                    <div class="col-xs-6 col-sm-2">
+                        <input type="checkbox">På lager
+                    </div>
+                    <div class="col-xs-6 col-sm-2">
+                        <input type="checkbox">Rabat
+                    </div>
+                </form>
+            </div>
+
+
+            <!-- SORTERINGSKNAP -->
+            <div id="sorteringsknap" class="col-xs-12 col-sm-2 col-md-1">
+                <div class="btn-group">
+                    <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sorter efter <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>Pris (stigende)</li>
+                        <li>Pris (faldende)</li>
+                        <li>Rabat</li>
+                        <li>Udsolgt</li>
+                    </ul>
+                </div>
             </div>
         </div>
 

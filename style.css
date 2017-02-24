@@ -4,7 +4,6 @@ body {
 
 #splashbillede img {
     position: relative;
-    height: ;
     width: 100%;
     margin-bottom: 5vh;
     border-bottom: solid 10px;
@@ -21,6 +20,12 @@ body {
     border-left: solid 1vh black;
 }
 
+#filtreringsmenu {
+    font-family: 'Khula', sans-serif;
+    font-size: calc(6px + 1vh);
+    background-color: aqua !important;
+}
+
 #sorteringsknap {
     padding: 0;
     text-align: right;
@@ -29,6 +34,7 @@ body {
 #sorteringsknap button {
     font-family: 'Khula', sans-serif;
     color: #e0bc92;
+    font-size: calc(6px + 1vh);
     background-color: #383838;
     border-color: #e0bc92;
     border-width: 2px;
@@ -62,9 +68,8 @@ body {
     font-family: 'Khula', sans-serif;
 }
 
-.container h5,
-p {
-    font-size: 2.4vh;
+.container h5 {
+    font-size: calc(6px + 1vh);
     font-family: 'Khula', sans-serif;
 }
 
@@ -77,7 +82,14 @@ p {
     background-color: #e0bc92;
     border-left: solid 10px;
     border-right: solid 10px rgb(193, 140, 102);
-    height: 75vh;
+    height: calc(150px + 55vh);
+}
+
+#se_detaljer_knap {
+    font-family: 'Khula', sans-serif;
+    color: #e0bc92;
+    font-size: calc(6px + 1vh);
+    background-color: #383838;
 }
 
 .udsolgt,
