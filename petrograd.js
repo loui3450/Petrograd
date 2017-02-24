@@ -26,32 +26,58 @@ function visProdukt(produkt) {
     var klon = document.querySelector("#produkt_template").content.cloneNode(true);
 
 
-    /**** INDSÆTTER DATA I KLON ****/
+    /**** INDSÆTTER DATA I KLON I .ret ****/
     klon.querySelector(".data_navn").innerHTML = produkt.navn;
     klon.querySelector(".data_kort_beskrivelse").innerHTML = produkt.kortbeskrivelse;
     klon.querySelector(".data_allergener").innerHTML = produkt.allergener;
     klon.querySelector(".data_pris").innerHTML = produkt.pris;
 
 
-    /**** RABAT-BEREGNING ****/
+    /**** INDSÆTTER DATA I KLON I MODAL ****/
+    klon.querySelector(".modal_overskrift").innerHTML = produkt.navn;
+    klon.querySelector(".modal_lang_beskrivelse").innerHTML = "Her ville der have stået en langbeskrivelse, hvis det var med i JSON-filen.";
+    klon.querySelector(".modal_allergener").innerHTML = produkt.allergener;
+    klon.querySelector(".modal_data_pris").innerHTML = produkt.pris;
+
+
+    /**** SE DETALJER-KNAP ****/
+    klon.getElementById("modal_menukort").setAttribute("id", "modal_menukort_" + produkt.id);
+    klon.getElementById("se_detaljer_knap").setAttribute("data-target", "#modal_menukort_" + produkt.id);
+
+
+    /**** RABAT-BEREGNING I .ret ****/
     var rabatpris = Math.ceil(produkt.pris - (produkt.pris * produkt.rabatsats / 100));
     klon.querySelector(".data_rabatpris").innerHTML = rabatpris;
+
+
+    /**** RABAT-BEREGNING I MODAL ****/
+    var rabatpris = Math.ceil(produkt.pris - (produkt.pris * produkt.rabatsats / 100));
+    klon.querySelector(".modal_data_rabatpris").innerHTML = rabatpris;
 
 
     /**** BILLEDER ****/
     klon.querySelector(".data_billede").src = "/Billeder/imgs/Large/" + produkt.billede + ".jpg";
 
 
-    /**** ALLERGENER ****/
+    /**** ALLERGENER I .ret ****/
     if (produkt.allergener == false) {
         var allergener = klon.querySelector(".allergener_tekst");
         allergener.parentNode.removeChild(allergener);
     } else {
-        klon.querySelector(".data_allergener").innerHTML = "Her ville der have stået allergener, hvis det var med i JSON-filen! ... Peter Lind...";
+        klon.querySelector(".data_allergener").innerHTML = "Her ville der have stået allergener, hvis det var med i JSON-filen.";
     }
 
 
-    /**** VEGETAR ****/
+    /**** ALLERGENER I MODAL ****/
+    if (produkt.allergener == false) {
+        var allergener = klon.querySelector(".modal_allergener_tekst");
+        allergener.parentNode.removeChild(allergener);
+    } else {
+        klon.querySelector(".modal_allergener").innerHTML = "Her ville der have stået allergener, hvis det var med i JSON-filen.";
+    }
+
+
+    /**** VEGETAR I .ret ****/
     if (produkt.vegetar == false) {
         var vegetaregnet = klon.querySelector(".vegetaregnet_tekst");
         vegetaregnet.parentNode.removeChild(vegetaregnet);
@@ -61,7 +87,17 @@ function visProdukt(produkt) {
     }
 
 
-    /**** UDSOLGT ****/
+    /**** VEGETAR I MODAL ****/
+    if (produkt.vegetar == false) {
+        var vegetaregnet = klon.querySelector(".modal_vegetaregnet_tekst");
+        vegetaregnet.parentNode.removeChild(vegetaregnet);
+    } else {
+        var ikke_vegetaregnet = klon.querySelector(".modal_ikke_vegetaregnet_tekst");
+        ikke_vegetaregnet.parentNode.removeChild(ikke_vegetaregnet);
+    }
+
+
+    /**** UDSOLGT I .ret ****/
     if (produkt.udsolgt == false) {
         //produktet er ikke udsolge
         //udsolgt_tekst skal fjernes
@@ -72,13 +108,34 @@ function visProdukt(produkt) {
     }
 
 
-    /**** RABAT ****/
+    /**** UDSOLGT I MODAL ****/
+    if (produkt.udsolgt == false) {
+        //produktet er ikke udsolge
+        //udsolgt_tekst skal fjernes
+        var modal_udsolgt_tekst = klon.querySelector(".modal_udsolgt_tekst");
+        modal_udsolgt_tekst.parentNode.removeChild(modal_udsolgt_tekst);
+    } else {
+        klon.querySelector(".modal_pris").classList.add("udsolgt");
+    }
+
+
+    /**** RABAT i .ret ****/
     if (produkt.udsolgt == true || produkt.rabatsats == 0) {
         //der er ikke rabat. Rabatprisen skal fjernes
         var rabatpris = klon.querySelector(".rabatpris");
         rabatpris.parentNode.removeChild(rabatpris);
     } else {
         klon.querySelector(".pris").classList.add("rabat");
+    }
+
+
+    /**** RABAT I MODAL ****/
+    if (produkt.udsolgt == true || produkt.rabatsats == 0) {
+        //der er ikke rabat. Rabatprisen skal fjernes
+        var modal_rabatpris = klon.querySelector(".modal_data_rabatpris");
+        modal_rabatpris.parentNode.removeChild(modal_rabatpris);
+    } else {
+        klon.querySelector(".modal_data_pris").classList.add("rabat");
     }
 
 
