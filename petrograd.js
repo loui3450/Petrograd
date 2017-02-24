@@ -1,19 +1,26 @@
 window.addEventListener("load", sidenVises);
 
+
 function sidenVises() {
     console.log("siden vises");
 
 
-    /**** LÆS PRODUKTLISTE ****/
+    /**** LÆSER PRODUKTLISTE ****/
     $.getJSON("http://petlatkea.dk/2017/dui/api/productlist?callback=?", visProduktliste)
-
 }
 
+
+function hentSpecifikData(inputProduct) {
+    $.getJSON("http://petlatkea.dk/2017/dui/api/product?callback=?&id=" + inputProduct.id, visProdukt)
+}
 
 /**** LÆSER JSON-FIL OG KALDER visProdukt PÅ ALLE PRODUKTER ****/
 function visProduktliste(listen) {
     console.table(listen);
-    listen.forEach(visProdukt);
+
+
+    /**** HENTER AL DATA OM ÉT SPECIFIKT PRODUKT ****/
+    listen.forEach(hentSpecifikData);
 }
 
 
@@ -35,7 +42,7 @@ function visProdukt(produkt) {
 
     /**** INDSÆTTER DATA I KLON I MODAL ****/
     klon.querySelector(".modal_overskrift").innerHTML = produkt.navn;
-    klon.querySelector(".modal_lang_beskrivelse").innerHTML = "Her ville der have stået en langbeskrivelse, hvis det var med i JSON-filen.";
+    klon.querySelector(".modal_lang_beskrivelse").innerHTML = produkt.langbeskrivelse;
     klon.querySelector(".modal_allergener").innerHTML = produkt.allergener;
     klon.querySelector(".modal_data_pris").innerHTML = produkt.pris;
 
@@ -43,6 +50,12 @@ function visProdukt(produkt) {
     /**** SE DETALJER-KNAP ****/
     klon.getElementById("modal_menukort").setAttribute("id", "modal_menukort_" + produkt.id);
     klon.getElementById("se_detaljer_knap").setAttribute("data-target", "#modal_menukort_" + produkt.id);
+
+
+    /**** HENTER KORT BESKRIVELSE, HVIS LANG BESKRIVELSE IKKE ER I DATA HOS SPECIFIKT PRODUKT ****/
+    if (produkt.langbeskrivelse == "") {
+        klon.querySelector(".modal_lang_beskrivelse").innerHTML = produkt.kortbeskrivelse;
+    }
 
 
     /**** RABAT-BEREGNING I .ret ****/
@@ -64,7 +77,7 @@ function visProdukt(produkt) {
         var allergener = klon.querySelector(".allergener_tekst");
         allergener.parentNode.removeChild(allergener);
     } else {
-        klon.querySelector(".data_allergener").innerHTML = "Her ville der have stået allergener, hvis det var med i JSON-filen.";
+        klon.querySelector(".data_allergener").innerHTML = produkt.allergener;
     }
 
 
@@ -73,7 +86,7 @@ function visProdukt(produkt) {
         var allergener = klon.querySelector(".modal_allergener_tekst");
         allergener.parentNode.removeChild(allergener);
     } else {
-        klon.querySelector(".modal_allergener").innerHTML = "Her ville der have stået allergener, hvis det var med i JSON-filen.";
+        klon.querySelector(".modal_allergener").innerHTML = produkt.allergener;
     }
 
 

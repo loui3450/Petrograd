@@ -103,3 +103,8 @@ body {
 .rabat {
     text-decoration: line-through;
 }
+
+.modal_indhold {
+    background-color: #e0bc92;
+    padding: 0;
+}
