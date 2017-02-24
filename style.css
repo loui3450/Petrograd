@@ -2,11 +2,18 @@ body {
     background-color: rgb(193, 140, 102) !important;
 }
 
+#splashbillede {
+    width: 100%;
+    max-height: 120vh;
+    overflow: hidden;
+    margin-top: calc(-7px + -09vw);
+    margin-bottom: 5vh;
+    border-bottom: solid 10px;
+}
+
 #splashbillede img {
     position: relative;
     width: 100%;
-    margin-bottom: 5vh;
-    border-bottom: solid 10px;
 }
 
 #block {
@@ -15,7 +22,7 @@ body {
     color: rgb(193, 140, 102);
     -webkit-text-stroke: 2px black;
     position: absolute;
-    top: 45vw;
+    top: 30vw;
     left: 3%;
     border-left: solid 1vh black;
 }
