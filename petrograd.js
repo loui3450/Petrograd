@@ -1,6 +1,18 @@
 window.addEventListener("load", sidenVises);
 
 
+function sorterProdukter(prop) {
+    return function (a, b) {
+        if (a[prop] > b[prop]) {
+            return 1;
+        } else if (a[prop] < b[prop]) {
+            return -1;
+        }
+        return 0;
+    }
+}
+
+
 function sidenVises() {
     console.log("siden vises");
 
@@ -14,10 +26,13 @@ function hentSpecifikData(inputProduct) {
     $.getJSON("http://petlatkea.dk/2017/dui/api/product?callback=?&id=" + inputProduct.id, visProdukt)
 }
 
+
 /**** LÆSER JSON-FIL OG KALDER visProdukt PÅ ALLE PRODUKTER ****/
 function visProduktliste(listen) {
     console.table(listen);
 
+    //SORTER TIL AT STARTE MED
+    listen.sort(sorterProdukter("navn"));
 
     /**** HENTER AL DATA OM ÉT SPECIFIKT PRODUKT ****/
     listen.forEach(hentSpecifikData);
@@ -52,7 +67,7 @@ function visProdukt(produkt) {
     klon.getElementById("se_detaljer_knap").setAttribute("data-target", "#modal_menukort_" + produkt.id);
 
 
-    /**** HENTER KORT BESKRIVELSE, HVIS LANG BESKRIVELSE IKKE ER I DATA HOS SPECIFIKT PRODUKT ****/
+    /**** HENTER KORT BESKRIVELSE IND I MODAL, HVIS LANG BESKRIVELSE IKKE ER I DATA HOS SPECIFIKT PRODUKT ****/
     if (produkt.langbeskrivelse == "") {
         klon.querySelector(".modal_lang_beskrivelse").innerHTML = produkt.kortbeskrivelse;
     }
@@ -154,5 +169,4 @@ function visProdukt(produkt) {
 
     /**** TILFØJER klon TIL KATEGORI ****/
     document.querySelector("." + produkt.kategori).appendChild(klon);
-
 }
