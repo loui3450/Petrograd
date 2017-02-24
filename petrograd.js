@@ -132,10 +132,10 @@ function visProdukt(produkt) {
     /**** RABAT I MODAL ****/
     if (produkt.udsolgt == true || produkt.rabatsats == 0) {
         //der er ikke rabat. Rabatprisen skal fjernes
-        var modal_rabatpris = klon.querySelector(".modal_data_rabatpris");
+        var modal_rabatpris = klon.querySelector(".modal_rabatpris");
         modal_rabatpris.parentNode.removeChild(modal_rabatpris);
     } else {
-        klon.querySelector(".modal_data_pris").classList.add("rabat");
+        klon.querySelector(".modal_pris").classList.add("rabat");
     }
 
 
