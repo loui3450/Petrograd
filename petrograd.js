@@ -1,6 +1,18 @@
 window.addEventListener("load", sidenVises);
 
 
+var udenAllergener = false;
+
+
+var vegetaregnet_filtrer = false;
+
+
+var påLager = false;
+
+
+var rabat = false;
+
+
 var sorterEfter = "navn";
 
 
@@ -167,8 +179,37 @@ function visProdukt(produkt) {
     }
 
 
+    var visMåskeProdukt = true;
+
+
+    /**** FILTRERER PRODUKTER MED ALLERGENER FRA ****/
+    if (udenAllergener) {
+        visMåskeProdukt = visMåskeProdukt && produkt.allergener == "";
+    }
+
+
+    /**** FILTRERER IKKE VEGETAREGNEDE PRODUKTER FRA ****/
+    if (vegetaregnet_filtrer) {
+        visMåskeProdukt = visMåskeProdukt && produkt.vegetar;
+    }
+
+
+    /**** FILTRERER UDSOLGTE PRODUKTER FRA ****/
+    if (påLager) {
+        visMåskeProdukt = visMåskeProdukt && !produkt.udsolgt;
+    }
+
+
+    /**** FILTRERER PRODUKTER UDEN RABAT FRA ****/
+    if (rabat) {
+        visMåskeProdukt = visMåskeProdukt && produkt.rabatsats != 0;
+    }
+
+
     /**** TILFØJER klon TIL KATEGORI ****/
-    document.querySelector("." + produkt.kategori).appendChild(klon);
+    if (visMåskeProdukt) {
+        document.querySelector("." + produkt.kategori).appendChild(klon);
+    }
 }
 
 
@@ -187,12 +228,47 @@ function sorterProdukter(prop) {
 
 /**** FJERNER ALLE PRODUKTER FRA SIDEN ****/
 function fjernProdukter() {
-    var elems = document.body.getElementsByTagName("*");
-    for (i = 0; i < elems.length; i++) {
-        if (elems[i].getAttribute("class") == "modal fade" || elems[i].id == "ret") {
-            elems[i].parentNode.removeChild(elems[i]);
-        }
-    }
+    document.querySelector(".drikkevarer").innerHTML = "<div id='drikkevarer' class='col-xs-12 col-sm-8 col-sm-offset-2'><h2>Drikkevarer</h2></div>";
+
+    document.querySelector(".forretter").innerHTML = "<div id='forretter' class='col-xs-12 col-sm-8 col-sm-offset-2'><h2>Forretter</h2></div>";
+
+    document.querySelector(".hovedretter").innerHTML = "<div id='hovedretter' class='col-xs-12 col-sm-8 col-sm-offset-2'><h2>Hovedretter</h2></div>";
+
+    document.querySelector(".sideorders").innerHTML = "<div id='sideorders' class='col-xs-12 col-sm-8 col-sm-offset-2'><h2>Sideorders</h2></div>";
+
+    document.querySelector(".desserter").innerHTML = "<div id='desserter' class='col-xs-12 col-sm-8 col-sm-offset-2'><h2>Desserter</h2></div>";
+}
+
+
+/**** VISER PRODUKTER UDEN ALLERGENER ****/
+document.getElementById("uden_allergener").onclick = function () {
+    fjernProdukter();
+    udenAllergener = !udenAllergener;
+    sidenVises();
+}
+
+
+/**** VISER VEGETAREGNEDE PRODUKTER ****/
+document.getElementById("vegetaregnet").onclick = function () {
+    fjernProdukter();
+    vegetaregnet_filtrer = !vegetaregnet_filtrer;
+    sidenVises();
+}
+
+
+/**** VISER PRODUKTER PÅ LAGER ****/
+document.getElementById("på_lager").onclick = function () {
+    fjernProdukter();
+    påLager = !påLager;
+    sidenVises();
+}
+
+
+/**** VISER PRODUKTER MED RABAT ****/
+document.getElementById("rabat_filtrer").onclick = function () {
+    fjernProdukter();
+    rabat = !rabat;
+    sidenVises();
 }
 
 
