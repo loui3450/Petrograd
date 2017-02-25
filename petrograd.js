@@ -272,12 +272,23 @@ document.getElementById("rabat_filtrer").onclick = function () {
 }
 
 
+/**** NULSTILLER SORTERING ****/
+document.getElementById("sorter_efter").onclick = function () {
+    sorterEfter = "navn";
+    fjernProdukter();
+    sorterReverse = false;
+    sidenVises();
+    document.getElementById("sorteringsknap_tekst").innerHTML = "Sorter efter <span class='caret'></span>";
+}
+
+
 /**** SORTERER EFTER PRIS STIGENDE ****/
 document.getElementById("pris_stigende").onclick = function () {
     sorterEfter = "pris";
     fjernProdukter();
     sorterReverse = false;
     sidenVises();
+    document.getElementById("sorteringsknap_tekst").innerHTML = "Pris stigende <span class='caret'></span>";
 }
 
 
@@ -287,6 +298,7 @@ document.getElementById("pris_faldende").onclick = function () {
     fjernProdukter();
     sorterReverse = true;
     sidenVises();
+    document.getElementById("sorteringsknap_tekst").innerHTML = "Pris faldende <span class='caret'></span>";
 }
 
 
@@ -296,6 +308,7 @@ document.getElementById("rabat").onclick = function () {
     fjernProdukter();
     sorterReverse = true;
     sidenVises();
+    document.getElementById("sorteringsknap_tekst").innerHTML = "Rabat <span class='caret'></span>";
 }
 
 
@@ -305,4 +318,5 @@ document.getElementById("navn").onclick = function () {
     fjernProdukter();
     sorterReverse = false;
     sidenVises();
+    document.getElementById("sorteringsknap_tekst").innerHTML = "Navn (a-å) <span class='caret'></span>";
 }
