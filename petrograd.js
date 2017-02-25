@@ -1,16 +1,10 @@
 window.addEventListener("load", sidenVises);
 
 
-function sorterProdukter(prop) {
-    return function (a, b) {
-        if (a[prop] > b[prop]) {
-            return 1;
-        } else if (a[prop] < b[prop]) {
-            return -1;
-        }
-        return 0;
-    }
-}
+var sorterEfter = "navn";
+
+
+var sorterReverse = false;
 
 
 function sidenVises() {
@@ -31,8 +25,14 @@ function hentSpecifikData(inputProduct) {
 function visProduktliste(listen) {
     console.table(listen);
 
-    //SORTER TIL AT STARTE MED
-    listen.sort(sorterProdukter("navn"));
+
+    /**** SORTERER PRODUKTLISTEN ****/
+    if (sorterReverse) {
+        listen.sort(sorterProdukter(sorterEfter)).reverse();
+    } else {
+        listen.sort(sorterProdukter(sorterEfter));
+    }
+
 
     /**** HENTER AL DATA OM ÉT SPECIFIKT PRODUKT ****/
     listen.forEach(hentSpecifikData);
@@ -169,4 +169,64 @@ function visProdukt(produkt) {
 
     /**** TILFØJER klon TIL KATEGORI ****/
     document.querySelector("." + produkt.kategori).appendChild(klon);
+}
+
+
+/**** SORTERER PRODUKTER ALFABETISK EFTER NAVN ****/
+function sorterProdukter(prop) {
+    return function (a, b) {
+        if (a[prop] > b[prop]) {
+            return 1;
+        } else if (a[prop] < b[prop]) {
+            return -1;
+        }
+        return 0;
+    }
+}
+
+
+/**** FJERNER ALLE PRODUKTER FRA SIDEN ****/
+function fjernProdukter() {
+    var elems = document.body.getElementsByTagName("*");
+    for (i = 0; i < elems.length; i++) {
+        if (elems[i].getAttribute("class") == "modal fade" || elems[i].id == "ret") {
+            elems[i].parentNode.removeChild(elems[i]);
+        }
+    }
+}
+
+
+/**** SORTERER EFTER PRIS STIGENDE ****/
+document.getElementById("pris_stigende").onclick = function () {
+    sorterEfter = "pris";
+    fjernProdukter();
+    sorterReverse = false;
+    sidenVises();
+}
+
+
+/**** SORTERER EFTER PRIS FALDENDE ****/
+document.getElementById("pris_faldende").onclick = function () {
+    sorterEfter = "pris";
+    fjernProdukter();
+    sorterReverse = true;
+    sidenVises();
+}
+
+
+/**** SORTERER EFTER RABAT ****/
+document.getElementById("rabat").onclick = function () {
+    sorterEfter = "rabatsats";
+    fjernProdukter();
+    sorterReverse = true;
+    sidenVises();
+}
+
+
+/**** SORTERER ALFABETISK EFTER NAVN ****/
+document.getElementById("navn").onclick = function () {
+    sorterEfter = "navn";
+    fjernProdukter();
+    sorterReverse = false;
+    sidenVises();
 }

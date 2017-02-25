@@ -47,6 +47,10 @@ body {
     border-width: 2px;
 }
 
+#sorteringsknap ul a {
+    color: #e0bc92;
+}
+
 .dropdown-menu {
     font-family: 'Khula', sans-serif;
     color: #e0bc92;
